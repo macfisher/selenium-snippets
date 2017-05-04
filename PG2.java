@@ -7,9 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.Assert;
 
+
 // May need these imports later
 //import java.util.concurrent.TimeUnit;
 //import org.openqa.selenium.NoSuchElementException;
+//import java.util.NoSuchElementException;
 
 
 public class PG2 {
@@ -40,13 +42,13 @@ public class PG2 {
 		WebElement loginBtn = driver.findElement(By.cssSelector(loginSel));
 		loginBtn.click();
 		
-		boolean loginErrorExists = driver.findElements(By.cssSelector("._4rbf")).size() != 0;
-		
 		//driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		
-		if (loginErrorExists) {
-			String loginErrorText = driver.findElement(By.cssSelector("._4rbf")).getText();
-			String loginErrorExpectedText = "The password you’ve entered is incorrect. Forgot Password?";
+		boolean loginError = driver.findElements(By.cssSelector("._4rbf")).size() != 0;
+		
+		if (loginError) {
+			String loginErrorText         	= driver.findElement(By.cssSelector("._4rbf")).getText();
+			String loginErrorExpectedText 	= "The password you've entered is incorrect. Forgot Password?";
 			
 			System.out.println(loginErrorText);
 			Assert.assertEquals(loginErrorExpectedText, loginErrorText);
