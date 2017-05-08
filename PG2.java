@@ -48,7 +48,7 @@ public class PG2 {
 		
 		if (loginError) {
 			String loginErrorText         	= driver.findElement(By.cssSelector("._4rbf")).getText();
-			String loginErrorExpectedText 	= "The password you've entered is incorrect. Forgot Password?";
+			String loginErrorExpectedText 	= "The password you’ve entered is incorrect. Forgot Password?";
 			
 			System.out.println(loginErrorText);
 			Assert.assertEquals(loginErrorExpectedText, loginErrorText);
