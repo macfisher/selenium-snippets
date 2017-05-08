@@ -2,7 +2,8 @@ package newpackage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.Assert;
@@ -16,8 +17,11 @@ import org.junit.Assert;
 
 public class PG2 {
 	public static void main(String[] args) {
-		System.setProperty("webdriver.firefox.marionette", "C:\\geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		//System.setProperty("webdriver.firefox.marionette", "C:\\geckodriver.exe");
+		//WebDriver driver = new FirefoxDriver();
+		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
+		WebDriver driver = new InternetExplorerDriver();
+		
 		
 		String baseUrl  	= "https://www.facebook.com";
 		String email    	= "email@gmail.com";

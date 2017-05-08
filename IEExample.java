@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.*;
 
 public class IEExample {
 	/**
-	,---------------------.
-	| IE Browser Settings |
+	,-------------------------.
+	| IEDriverServer Settings |
 	|-----------------------------------------------------------------------------------------------.
 	|                                                                                               |
 	| It needs to set same Security level in all zones:                                             |
@@ -19,8 +19,13 @@ public class IEExample {
 	|                                                                                               |  
 	| Finally, set Zoom level to 100% by right clicking on the gear located at the top right corner | 
 	| and enabling the status-bar. Default zoom level is now displayed at the lower right.          |
+	| These settings will most likely require a reboot of Windows. I suspect registry values        |
+	| were set in the process.                                                                      |
 	|                                                                                               |
-	| NOTE: Running on IE11 on Windows 7. Edge only runs on Windows 10.                             |
+	| NOTE: Running IE11 on Windows 7. Edge only runs on Windows 10.                                |
+	|                                                                                               |
+	| IEDriverServer (64bit) has a bug with sendKeys() function executing very slowly, use 32bit    |
+	| https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver                            |
 	|                                                                                               |
 	`-----------------------------------------------------------------------------------------------'
 	 */
