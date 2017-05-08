@@ -7,9 +7,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class IEExample {
 	public static void main(String[] args) {
-		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, true);
 		
-		WebDriver driver = new InternetExplorerDriver();
+		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
+		WebDriver driver = new InternetExplorerDriver(capabilities);
 		
 		driver.get("https://www.google.com");
 		

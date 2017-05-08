@@ -1,27 +1,24 @@
 package newpackage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.Assert;
-
-
-// May need these imports later
-//import java.util.concurrent.TimeUnit;
-//import org.openqa.selenium.NoSuchElementException;
-//import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 
 public class PG2 {
 	public static void main(String[] args) {
-		//System.setProperty("webdriver.firefox.marionette", "C:\\geckodriver.exe");
-		//WebDriver driver = new FirefoxDriver();
-		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
-		WebDriver driver = new InternetExplorerDriver();
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, true);
 		
+		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
+		WebDriver driver = new InternetExplorerDriver(capabilities);
 		
 		String baseUrl  	= "https://www.facebook.com";
 		String email    	= "email@gmail.com";
@@ -29,15 +26,15 @@ public class PG2 {
 		
 		driver.get(baseUrl);
 
-		WebDriverWait wait = new WebDriverWait(driver, 3);
+		WebDriverWait wait3 = new WebDriverWait(driver, 3);
 		
 		// Enter email address
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+		wait3.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		WebElement emailElem = driver.findElement(By.id("email"));
 		emailElem.sendKeys(email);
 		
 		// Enter password
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("pass")));
+		wait3.until(ExpectedConditions.visibilityOfElementLocated(By.id("pass")));
 		WebElement passwordElem = driver.findElement(By.cssSelector("#pass"));
 		passwordElem.sendKeys(password);
 		
@@ -46,22 +43,29 @@ public class PG2 {
 		WebElement loginBtn = driver.findElement(By.cssSelector(loginSel));
 		loginBtn.click();
 		
-		//driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		boolean loginError = driver.findElements(By.cssSelector("._4rbf")).size() != 0;
+		String  profileIcon  = "div[data-click='profile_icon']";
+		boolean loginSuccess = driver.findElements(By.cssSelector(profileIcon)).size() != 0;
 		
-		if (loginError) {
-			String loginErrorText         	= driver.findElement(By.cssSelector("._4rbf")).getText();
-			String loginErrorExpectedText 	= "The password you’ve entered is incorrect. Forgot Password?";
+		if (loginSuccess) {
+			System.out.println("Login success");
+		} else {
+			WebDriverWait wait20 = new WebDriverWait(driver, 20);
+			
+			wait20.until(
+					ExpectedConditions
+						.visibilityOfElementLocated(By.cssSelector("._4rbf"))
+			);
+			
+			WebElement loginError             	= driver.findElement(By.cssSelector("._4rbf"));
+			String     loginErrorText         	= loginError.getText();
+			
+			String loginErrorExpectedText = "The password you’ve entered is incorrect. Forgot Password?";
 			
 			System.out.println(loginErrorText);
 			Assert.assertEquals(loginErrorExpectedText, loginErrorText);
 			Assert.fail("Login failed");
-		} else {
-			String profileIconSelStr = "div[data-click='profile_icon']";
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(profileIconSelStr)));
-			System.out.println("Login success");
 		}
 				
 		driver.close();
