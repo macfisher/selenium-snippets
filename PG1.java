@@ -1,4 +1,4 @@
-package newpackage;
+package archive;
 
 // Importing wild card packages for now
 import org.openqa.selenium.*;

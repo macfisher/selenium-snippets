@@ -1,4 +1,4 @@
-package newpackage;
+package archive;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ public class PG2 {
 		capabilities.setJavascriptEnabled(true);
 		capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, true);
 		
-		System.setProperty("webdriver.ie.driver", "C:\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", "C:\\Selenium\\IEDriverServer.exe");
 		WebDriver driver = new InternetExplorerDriver(capabilities);
 		
 		String baseUrl  	= "https://www.facebook.com";

@@ -1,4 +1,4 @@
-package newpackage;
+package archive;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;

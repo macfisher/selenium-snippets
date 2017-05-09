@@ -1,8 +1,8 @@
-package newpackage;
+package archive;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import java.io.IOException;
+//import java.io.IOException;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
