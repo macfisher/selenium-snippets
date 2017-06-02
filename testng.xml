@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestAll">
+	<test name="TestAll">
+		<classes>
+			<class name="firsttestngpackage.Test1" >
+				<methods>
+					<include name="testMethod" />
+					<include name="testMethod2" />
+				</methods>
+			</class>
+			<class name="firsttestngpackage.Test2" >
+				<methods>
+					<include name="f" />
+					<include name="g" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
