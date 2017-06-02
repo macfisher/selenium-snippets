@@ -6,9 +6,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
 public class TestBase {
-	protected WebDriver driver;
+	//protected WebDriver driver;
+	public static WebDriver driver; // Needs to be public static!
 	
-	@BeforeClass
+	
+	@BeforeTest(alwaysRun = true)
 	public void setUp() {
 		System.out.println("I am in setUp method.");
 		
@@ -27,9 +29,9 @@ public class TestBase {
 		// Execute login() function
 	}
 	
-	@AfterClass
+	@AfterTest(alwaysRun = true)
 	public void tearDown() {
-		System.out.println("I am in tearDown method.");
+		System.out.println("I am in tearDown method."); // requires alwaysRun!
 		driver.close();
 		//System.exit(0);
 	}

@@ -1,17 +1,33 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestAll">
-	<test name="TestAll">
+	<test name="TestTest">
+		<groups>
+			<run>
+				<include name="TestOneAndTwo" />
+				<include name="ThreeAndFour" />
+			</run>
+		</groups>
 		<classes>
-			<class name="firsttestngpackage.Test1" >
+			<class name="firsttestngpackage.Test1">
 				<methods>
 					<include name="testMethod" />
 					<include name="testMethod2" />
 				</methods>
 			</class>
-			<class name="firsttestngpackage.Test2" >
+			<class name="firsttestngpackage.Test2">
 				<methods>
 					<include name="f" />
 					<include name="g" />
+				</methods>
+			</class>
+			<class name="firsttestngpackage.Test3">
+				<methods>
+					<include name="test3" />
+				</methods>
+			</class>
+			<class name="firsttestngpackage.Test4">
+				<methods>
+					<include name="test4" />
 				</methods>
 			</class>
 		</classes>

@@ -10,9 +10,9 @@ package archive;
 import org.testng.annotations.*;
 
 
+@Test(groups = "TestOneAndTwo")
 public class Test1 extends TestBase 
 {
-	@Test
 	public void testMethod() {
 		System.out.println("I am in testMethod 1");
 		driver.get("www.google.com");
@@ -21,7 +21,7 @@ public class Test1 extends TestBase
 		// Your assertions come here.
 	}
 	
-	@Test
+	
 	public void testMethod2() {
 		System.out.println("I am in testMethod 2");
 		driver.get("www.facebook.com");
